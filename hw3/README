@@ -1,0 +1,83 @@
+# hw3 
+# airfoil.py 
+
+# Objective Oriented Programming homework
+
+# input and output
+    Input :
+        - path to the directory containing data files
+
+    Output :
+        - chord length
+        - pressure coefficients in Cartesin coordinates (Cx,Cy)
+        - lift coefficient (Cl)
+        - stagnation point and pressure
+
+
+# Description : 
+This module analyzes given data set (coordinates and pressure coefficient)
+and finds characteristics (outputs like chord, Cl, stagnation point)
+of several angle of attack.
+
+Angle of attack is the inflow direction to an airfoil, which determines
+the characteristics: 
+
+- Pressure coefficient is non-dimensional pressure.
+It is important because the difference in the pressure between
+lower and upper parts of an airfoil generates lift force.
+Provided pressure coefficient decomposed into two components in cartesian coordinates.
+
+- Decomposed pressure coefficient are used for computing lift coefficient
+(lift coefficient is related to the lift force)
+
+- The location and pressure of stagnation points.
+(The point indicates a )
+
+
+
+# Programming description
+Input file should have a name in specific form.
+And it considers several error handling :
+    reading files
+    reading inputs
+    
+
+
+
+
+# Class airfoil includes methods :
+
+    airfoil.__init__
+        initialize variables used in the class
+        
+
+    airfoil.__repr__
+        generate list of output lines
+        for printing results in tablular form
+
+
+    airfoil.read_flist
+        read the list of files under given path
+
+
+    airfoil.read_xy
+        read x and y coordinates from xy.dat file
+
+    airfoil.cal_chord
+        compute chord length of an airfoil
+
+
+    airfoil.read_cp
+        read pressure coefficients of each angle of attack
+
+
+    airfoil.cal_cxyl
+        decompose pressure coefficient into  x and y components (cx and cy)
+        computes lift coefficient using cx and cy
+
+    airfoil.find_stag_pt
+        find stagnation point(a point has maximum pressure along the airfoil)
+
+
+
+

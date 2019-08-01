@@ -1,0 +1,28 @@
+# HW6, write up
+
+The code includes functionalities required in the instruction.
+"image.cpp" consists of one function "Convolution" and one class "Image".
+
+"Convolution":
+    computes the convolution between input img file and kernel.
+    (kernel size should be odd, it throws error if even-size kernel is given)
+    It does not process the data near four edges. 
+    Edges are processed in the image class after running this function,
+    based on the method of the class calling this function.
+    
+
+"Image":
+    is consist of three methods: BoxBlur, Save and Sharpness.
+
+    - BoxBlur : 
+    makes input image blur, various size of kernel can be used.
+    (kerner size should be odd and greater than 1 
+    to avoid error occuring in "Convolution" function)
+
+    - Save : 
+    Saves a image file using given function in hw6.cpp
+
+    - Sharpness :
+    computes the sharpness of the image using Laplacian operator as a kernel.
+    
+

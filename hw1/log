@@ -1,0 +1,111 @@
+# Part 1
+files are generated
+
+
+
+# Part 2
+
+$ python3 generatedata.py 1000 600 50 "ref_1.txt" "reads_1.txt" > log
+reference length: 1000
+number reads: 600
+read length 50
+aligns 0: 0.08833333333333333
+aligns 1: 0.7833333333333333
+aligns 2: 0.12833333333333333
+
+$ python3 generatedata.py 10000 6000 50 "ref_2.txt" "reads_2.txt" >> log
+reference length: 10000
+number reads: 6000
+read length 50
+aligns 0: 0.10283333333333333
+aligns 1: 0.7393333333333333
+aligns 2: 0.15783333333333333
+
+$ python3 generatedata.py 100000 60000 50 "ref_3.txt" "reads_3.txt" >> log
+reference length: 100000
+number reads: 60000
+read length 50
+aligns 0: 0.10076666666666667
+aligns 1: 0.7499166666666667
+aligns 2: 0.14931666666666665
+
+Q1.
+First, a reference DNA sequence is generated following instructions given in the homework pdf document.
+A function is implementd which writes random DNA sequence in a corresponding length input.
+This function is used for generating 75% length of the reference and reads having zero align.
+After the generation of reference, the last part of it is copied and appended to get 100% length.
+
+For generating a read, first a random number in [0, 1) is created.
+If the number is below 0.1, 10% probability, it will find a 
+else if the number is above 0.85, corresponds to 15% probability, 
+else, with 75% probability, it finds a read aligns once.
+
+Every single generation, a parameter is also defined to test whether it satisfies requirements.
+1. a new read exists in the sets of previous reads (e.g. the read is new or not)
+2. how many time it aligns (e.g. it actually aligns as it is originally designed)
+Once the new read satisfies the two conditions, it is written in a file and added to the set of reads.
+
+Yes, it will work corretly for other data sets.
+It may not be able to handle some unexpected cases like reads are given in different length.
+As far as the inputs do not include this special case, it will work fine
+
+Q2. 
+It is not expected to have an exact distributions.
+Since a random number is generated, it is actually hard to achieve 15% / 75% / 10%.
+If the goal is to get the exact number, I would use different ways.
+One reason for this unexact distribution is the size of sample(e.g. reads in this problem).
+Once we have large number of reads, we will have the result following the distribution well.
+
+Q3.
+I spent around 3 hours for coding and making it run.
+But generally it took few hours to make it organized.
+
+
+# Part 3
+
+$ python3 processdata.py ref_1.txt reads_1.txt align_1.txt
+reference length 1000
+number reads: 600
+aligns 0: 0.08833333333333333
+aligns 1: 0.7833333333333333
+aligns 2: 0.12833333333333333
+elapsed time: 0.007332324981689453
+
+$ python3 processdata.py ref_2.txt reads_2.txt align_2.txt
+reference length 10000
+number reads: 6000
+aligns 0: 0.10283333333333333
+aligns 1: 0.7393333333333333
+aligns 2: 0.15783333333333333
+elapsed time: 0.3409144878387451
+
+$ python3 processdata.py ref_3.txt reads_3.txt align_3.txt
+reference length 100000
+number reads: 60000
+aligns 0: 0.10076666666666667
+aligns 1: 0.7499166666666667
+aligns 2: 0.14931666666666665
+elapsed time: 31.850078105926514
+
+
+Q1.
+The result from part 3 matches well with that from part 2.
+This is expected because both programs are based on the same considerations.
+The considrations in both generatedata.py and processdata.py help avoid a discrepancy between results from the two.
+
+Q2.
+Everytime the reference length and number of reads increase by 10 times, the elapsed time increases dramatically(about 100 times).
+Let's say the computational time increase by N^2.
+The data for a human at 30x coverage with a read length of 50 is expected to take 30^2 = 900 times more than the last case.
+It will be around 270000 seconds.
+The variation regarding the read length, I have not tested the number, but guess longer time will take as the length of read increases.
+
+For simple case it may be useful.
+It won't be feasible considering the human DNA sequence is far longer than the one generated in this homework.
+And it can only figure out the reads aligns up to 2 times, there may be a read repeats multiple times. 
+
+Q3.
+For this part, I spent less than an hour.
+Actually I implemented this within the part 2 and separated from it.
+
+

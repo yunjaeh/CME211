@@ -1,0 +1,60 @@
+# hw2 writeup
+
+# part 1
+
+# considerations when creating the test data
+First thing I considered for creating test data is simplicity.
+It should be simple and easy to compute given cosine similarity between data for verification of my code.
+Another thing I can test with simple data is the error handling of my code.
+Since ZeroDivisionError can happen consdiering the form of similarity equation, I could check that my function handles this kind of error well.
+But I more focused on verifying whether my code works well or not.
+Error handling is checked with another data set in ml-100k. 
+
+
+
+# certain characteristics of the real data and file format that I made sure to capture in my test data
+As the time stamp(last column of the data) is not used in the computation, it can be random and I put all values as '1234'.
+Common characteristics that my test data and given data are the id of movie is not consecutive.
+My code handles this characteristic by using dictionay container and sorted(dictionary).
+
+
+
+# a reference solution for my test data
+The data is generated for testing my code working fine.
+I computed the cosine similarities and used it as the reference solution.
+
+
+
+
+
+# part 2
+
+# a command line log
+
+$python3 similarity.py ml-100k/u.data similarities.txt 5
+Input MovieLens file: ml-100k/u.data
+Output file for similarity data: similarities.txt
+Minimum number of common users: 5
+Read 100000 lines with total of 1682 movies and 943 users
+Computed similarities in 66.21 seconds
+
+$head -n 10 similarities.txt 
+1 (918,0.91,5)
+2 (1056,1.00,5)
+3 (1081,0.98,5)
+4 (35,0.80,6)
+5 (976,0.93,5)
+6 (279,0.96,5)
+7 (968,1.00,7)
+8 (590,0.86,6)
+9 (113,0.96,5)
+10 (1202,0.97,5)
+
+
+
+# the decomposition of my program
+
+dictionary
+error handling(zero division)
+
+
